@@ -4,7 +4,7 @@
 int main(int argc, char** argv)
 {
 	Data data;
-	data.OpenFile("raw.txt");
+	data.OpenRawFile("raw.txt");
 
 
 

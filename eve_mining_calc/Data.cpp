@@ -10,7 +10,7 @@ Data::~Data()
 }
 
 // Possible bug : first line has titles.
-int Data::OpenFile(std::string path)
+int Data::OpenRawFile(std::string path)
 {
 	int errorValue = 0;
 
@@ -42,5 +42,10 @@ int Data::OpenFile(std::string path)
 	}
 
 	return errorValue;
+}
+
+int Data::OpenConfigFile(std::string path)
+{
+
 }
 

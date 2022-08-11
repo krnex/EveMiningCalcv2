@@ -11,7 +11,8 @@ class Data
 public:
 	Data();
 	~Data();
-	int OpenFile(std::string path);
+	int OpenRawFile(std::string path);
+	int OpenConfigFile(std::string path);
 
 private:
 	std::vector<std::vector<std::string>> raw;
