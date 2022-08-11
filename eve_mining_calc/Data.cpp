@@ -14,7 +14,6 @@ std::string ltrim(std::string str)
 	}
 
 	return str;
-
 }
 
 std::string rtrim(std::string str)
@@ -153,7 +152,7 @@ int Data::OpenConfigFile(std::string path)
 
 			if (!pilots)
 			{
-				if (lineData[0] == "datapath")
+				if (lineData[0] == "dataPath")
 					this->config.fileName = (lineData[1]);
 
 				if (lineData[0] == "debug")
@@ -169,6 +168,9 @@ int Data::OpenConfigFile(std::string path)
 					this->config.taxrate[3] = std::stof((lineData[1]));
 				if (lineData[0] == "R64")
 					this->config.taxrate[4] = std::stof((lineData[1]));
+				
+				if (lineData[0] == "oreRate")
+					this->config.reprocess[0] = std::stof((lineData[1]));
 
 				if (lineData[0] == "Pilots")
 					pilots = true;
@@ -208,6 +210,8 @@ void Data::PrintConfig()
 		std::cout << ", " << this->config.taxrate[i];
 	std::cout << std::endl;
 
+	std::cout << "Ore Reprocessing Rate: " << this->config.reprocess[0] << std::endl;
+
 	std::cout << "Pilots:" << std::endl;
 	for (int i = 0; i < this->config.pilots.size(); i++) 
 	{
@@ -218,6 +222,7 @@ void Data::PrintConfig()
 		}
 		std::cout << std::endl;
 	}
+
 	
 	std::cout << std::endl;
 }
@@ -254,9 +259,4 @@ void Data::PrintRaw()
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-}
-
-bool Data::IsDebug()
-{
-	return this->config.debug;
 }

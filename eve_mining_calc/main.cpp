@@ -5,7 +5,7 @@ int main(int argc, char** argv)
 {
 	Data data("config.conf");
 
-	if (data.IsDebug())
+	if (data.config.debug)
 	{
 		data.PrintConfig();
 		data.PrintOres();
