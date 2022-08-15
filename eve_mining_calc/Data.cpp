@@ -1,40 +1,5 @@
 #include "Data.h"
 
-bool isSpace(unsigned char c) {
-	return (c == ' ' || c == '\n' || c == '\r' ||
-		c == '\t' || c == '\v' || c == '\f' || c == '\0');
-}
-
-std::string ltrim(std::string str)
-{
-	if (isSpace(str.back()) && str.size() > 1)
-	{
-		str.erase(str.size() - 1, 1);
-		ltrim(str);
-	}
-
-	return str;
-}
-
-std::string rtrim(std::string str)
-{
-	if (isSpace(str[0]) && str.size() > 1)
-	{
-		str.erase(0, 1);
-		ltrim(str);
-	}
-
-	return str;
-}
-
-std::string trim(std::string str)
-{
-	str = ltrim(str);
-	str = rtrim(str);
-
-	return str;
-}
-
 Data::Data(std::string path)
 {
 	this->OpenConfigFile(path);
@@ -42,30 +7,76 @@ Data::Data(std::string path)
 
 	OreSection section1 = { 
 		{"Bitumens", "Coesite", "Sylvite", "Zeolites"},
+
+		{std::vector<std::string>{"Hydrocarbons",      "Pye", "Mex"}, 
+		 std::vector<std::string>{"Silicates",         "Pye", "Mex"},
+		 std::vector<std::string>{"Evaporite Deposits","Pye", "Mex"},
+		 std::vector<std::string>{"Atmospheric Gases", "Pye", "Mex"}
+		},
+
+		{65, 2000, 400},
+		{3,1,2,4},
+
 		{"", "Brimful", "Glistening"},
 		this->config.taxrate[0]
 	};
 
 	OreSection section2 = { 
 		{"Cobalitite", "Euxenite", "Scheelite", "Titanite"},
+
+		{std::vector<std::string>{"Cobalt"},
+		 std::vector<std::string>{"Scandium"},
+		 std::vector<std::string>{"Tungsten"},
+		 std::vector<std::string>{"Titanium"}
+		},
+		{40},
+		{1,1,1,1},
+
 		{"", "Copious", "Twinkling" },
 		this->config.taxrate[1]
 	};
 
 	OreSection section3 = { 
 		{"Chromite", "Otavite", "Sperrylite", "Vanadinite"},
+
+		{std::vector<std::string>{"Hydrocarbons",       "Chromium"},
+		 std::vector<std::string>{"Atmospheric Gases",  "Cadmium"},
+		 std::vector<std::string>{"Evaporite Deposits", "Platinum"},
+		 std::vector<std::string>{"Silicates",          "Vanadium"}
+		},
+		{10, 40},
+	    {1,1,1,1},
+
 		{"", "Lavish", "Shimmering"},
 		this->config.taxrate[2]
 	};
 
 	OreSection section4 = {
 		{"Carnotite", "Cinnabar", "Pollucite", "Zircon"},
+
+		{std::vector<std::string>{"Atmospheric Gases",  "Cobalt",   "Technetium"},
+		 std::vector<std::string>{"Evaporite Deposits", "Tungsten", "Mercury"},
+		 std::vector<std::string>{"Hydrocarbons",       "Scandium", "Caesium"},
+		 std::vector<std::string>{"Silicates",          "Titanium", "Hafnium"}
+		},
+		{15, 10, 50},
+		{1,1,1,1},
+
 		{"", "Glowing", "Replete"},
 		this->config.taxrate[3]
 	};
 
 	OreSection section5 = {
 		{"Loparite", "Monazite", "Xenotime", "Ytterbite"},
+
+		{std::vector<std::string>{"Hydrocarbons",       "Scandium",   "Platinum", "Promethium"},
+		 std::vector<std::string>{"Evaporite Deposits", "Tungsten",   "Chromium", "Neodymium"},
+		 std::vector<std::string>{"Atmospheric Gases",  "Cobalt",     "Vanadium", "Dysprosium"},
+		 std::vector<std::string>{"Silicates",          "Titanium",   "Cadmium",  "Thulium"}
+		},
+		{20, 20, 10 ,22},
+		{1,1,1,1},
+
 		{"", "Bountiful", "Shining"},
 		this->config.taxrate[4]
 	};
@@ -109,7 +120,7 @@ int Data::OpenRawFile(std::string path)
 	} 
 	else 
 	{
-		std::cout << "Error: Could not read file " << path << std::endl;
+		std::cerr << "Error: Could not read file " << path << std::endl;
 		errorValue = 1;
 	}
 
@@ -194,7 +205,7 @@ int Data::OpenConfigFile(std::string path)
 	}
 	else
 	{
-		std::cout << "Error: Could not read file " << path << std::endl;
+		std::cerr << "Error: Could not read file " << path << std::endl;
 		errorValue = 1;
 	}
 
@@ -231,20 +242,25 @@ void Data::PrintOres()
 {
 	for (int i = 0; i < 5; i++)
 	{
-		std::cout << "Ore Section: " << std::to_string(i+1) << std::endl;
-
-		std::cout << "\t" << this->ore[i].type[0];
-		for (int k = 1; k < 3; k++)
-		{
-			std::cout << ", " << this->ore[i].type[k];
-		}
-		std::cout << std::endl;
+		std::cout << "Ore Section " << std::to_string(i+1) << ":" << std::endl;
 
 		std::cout << "\t" << this->ore[i].modifier[1];
 		std::cout << ", " << this->ore[i].modifier[2] << std::endl;
 
 		std::cout << "\t" << "Tax rate: " << this->ore[i].taxrate << std::endl;
+
+		for (int k = 0; k < 4; k++)
+		{
+			std::cout << "\t" << this->ore[i].type[k] << ":\n";
+
+			for (int l = 0; l < this->ore[i].refinedTypes[k].size(); l++)
+			{
+				std::cout << "\t\t" << (this->ore[i].refinedTypes[k][l] == "Pye" ? this->ore[i].refinedValues[l] * this->ore[i].pyeModifer[k] : this->ore[i].refinedValues[l]) << " " << this->ore[i].refinedTypes[k][l] << std::endl;
+			}
+		}
+
 		std::cout << std::endl;
+
 	}
 }
 

@@ -140,11 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Data.cpp" />
+    <ClCompile Include="Help.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pilot.cpp" />
+    <ClCompile Include="Processor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataValue.h" />
+    <ClInclude Include="Help.h" />
+    <ClInclude Include="Pilot.h" />
+    <ClInclude Include="Processor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config.conf" />
