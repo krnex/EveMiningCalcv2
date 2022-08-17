@@ -12,7 +12,10 @@ public:
 	~Pilot();
 
 	void AddOreMined(std::string oreName, int oreNumber);
-	void SetOresMined(Ore ore);
+	void AddOreSetMined(Ore ore);
+
+	void ProcessOres(Data* data);
+	void ApplyTaxes(Data* data);
 
 	bool IsAlias(std::string alias);
 	void Print();
@@ -20,4 +23,5 @@ public:
 private:
 	std::vector<std::string> alias;
 	Ore oresMined;
+	Ore oresProcessed;
 };

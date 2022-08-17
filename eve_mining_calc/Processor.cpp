@@ -8,7 +8,7 @@ Processor::~Processor()
 {
 }
 
-void Processor::GetPilotData(PilotSet* pilots, Data* data)
+void Processor::GetPilotMinedData(PilotSet* pilots, Data* data)
 {
 	for (auto pilotNames : data->config.pilots)
 	{
@@ -26,4 +26,33 @@ void Processor::GetPilotData(PilotSet* pilots, Data* data)
 			}
 		}
 	}
+}
+
+void Processor::ApplyTaxes(PilotSet* pilots, Data* data)
+{
+	for (auto pilot : *pilots)
+	{
+		pilot->ApplyTaxes(data);
+	}
+}
+
+void Processor::GetPilotProcessedMaterial(PilotSet* pilots, Data* data)
+{
+	for (auto pilot : *pilots)
+	{
+		pilot->ProcessOres(data);
+	}
+
+}
+
+void Processor::WriteToFile(PilotSet* pilots, Data* data)
+{
+	std::ofstream out(currentDateTime() + ".txt");
+
+	std::streambuf* coutbuf = std::cout.rdbuf();
+	std::cout.rdbuf(out.rdbuf());
+
+	for (auto pilot : *pilots) pilot->Print();
+
+	std::cout.rdbuf(coutbuf);
 }

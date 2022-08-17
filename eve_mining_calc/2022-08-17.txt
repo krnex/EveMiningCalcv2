@@ -1,0 +1,38 @@
+Pilot Alias':Antarian Duket, Antarian Jura Antarian, Antarian Mosfet Antarian
+Ores Mined:
+	Lavish Otavite	1414
+	Lavish Sperrylite	3490
+	Otavite	298
+	Replete Zircon	101142
+	Sperrylite	1341
+	Zeolites	10238
+	Zircon	111754
+Processed Ore:
+	Atmospheric Gases	6136
+	Cadmium	651
+	Evaporite Deposits	484
+	Hafnium	103039
+	Lavish Otavite	14
+	Lavish Sperrylite	90
+	Mex	36720
+	Otavite	98
+	Platinum	1875
+	Pye	734400
+	Replete Zircon	42
+	Silicates	30547
+	Sperrylite	41
+	Titanium	20971
+	Zeolites	38
+	Zircon	54
+
+Pilot Alias':Billy Credit
+Ores Mined:
+	Replete Zircon	67334
+	Zircon	54734
+Processed Ore:
+	Hafnium	59745
+	Replete Zircon	34
+	Silicates	17680
+	Titanium	12191
+	Zircon	34
+

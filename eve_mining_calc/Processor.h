@@ -9,7 +9,11 @@ public:
 	Processor();
 	~Processor();
 
-	void GetPilotData(PilotSet* pilots, Data* data);
+	void GetPilotMinedData(PilotSet* pilots, Data* data);
+	void GetPilotProcessedMaterial(PilotSet* pilots, Data* data);
+	void ApplyTaxes(PilotSet* pilots, Data* data);
+
+	void WriteToFile(PilotSet* pilots, Data* data);
 
 private:
 

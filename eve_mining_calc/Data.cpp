@@ -62,7 +62,7 @@ Data::Data(std::string path)
 		{15, 10, 50},
 		{1,1,1,1},
 
-		{"", "Glowing", "Replete"},
+		{"", "Replete", "Glowing"},
 		this->config.taxrate[3]
 	};
 
