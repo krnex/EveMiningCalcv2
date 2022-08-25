@@ -52,7 +52,11 @@ void Processor::WriteToFile(PilotSet* pilots, Data* data)
 	std::streambuf* coutbuf = std::cout.rdbuf();
 	std::cout.rdbuf(out.rdbuf());
 
-	for (auto pilot : *pilots) pilot->Print();
+	for (auto pilot : *pilots)
+	{
+		if(data->config.zeroOrePilots || pilot->HasOre())
+			pilot->Print();
+	}
 
 	std::cout.rdbuf(coutbuf);
 }

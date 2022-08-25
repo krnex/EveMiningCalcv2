@@ -119,7 +119,6 @@ void Pilot::ProcessOres(Data* data)
 
 }
 
-
 bool Pilot::IsAlias(std::string alias)
 {
 	bool is = false;
@@ -128,6 +127,11 @@ bool Pilot::IsAlias(std::string alias)
 		if (name == alias) is = true;
 
 	return is;
+}
+
+bool Pilot::HasOre()
+{
+	return (this->oresMined.size() > 0);
 }
 
 void Pilot::Print()

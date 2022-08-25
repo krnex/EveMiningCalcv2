@@ -19,6 +19,7 @@ int main(int argc, char** argv)
 
 	if (data.config.debug)
 	{
+		std::cout << "WHAT SI THIS" << data.config.debug << std::endl;
 		data.PrintConfig();
 		data.PrintOres();
 		data.PrintRaw();

@@ -17,6 +17,7 @@ public:
 	void ProcessOres(Data* data);
 	void ApplyTaxes(Data* data);
 
+	bool HasOre();
 	bool IsAlias(std::string alias);
 	void Print();
 

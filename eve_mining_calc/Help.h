@@ -16,6 +16,7 @@ struct Config
 	std::array<float, 5> taxrate; // R4, R8, R16, R32, R64
 	std::array<float, 3> reprocess; // Ore, Gas, Scrap
 	bool debug;
+	bool zeroOrePilots;
 };
 
 struct OreSection

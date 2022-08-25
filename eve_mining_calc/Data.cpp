@@ -167,7 +167,10 @@ int Data::OpenConfigFile(std::string path)
 					this->config.fileName = (lineData[1]);
 
 				if (lineData[0] == "debug")
-					this->config.debug = lineData[1] == "true" ? true : false;
+					this->config.debug = (lineData[1] == "true" ? true : false);
+
+				if(lineData[0] == "showZeroOrePilots")
+					this->config.zeroOrePilots = (lineData[1] == "true" ? true : false);
 
 				if (lineData[0] == "R4")
 					this->config.taxrate[0] = std::stof((lineData[1]));
@@ -215,6 +218,7 @@ int Data::OpenConfigFile(std::string path)
 void Data::PrintConfig()
 {
 	std::cout << "DataPath: " << this->config.fileName << std::endl;
+	std::cout << "showZeroOrePilots: " << this->config.zeroOrePilots << std::endl;
 
 	std::cout << "Tax Rates: " << this->config.taxrate[0];
 	for (int i = 1; i < 4; i++)
