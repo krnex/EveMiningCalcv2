@@ -1,5 +1,6 @@
 #pragma once
 #include<map>
+#include <iomanip>
 #include"Data.h"
 #include"Help.h"
 
@@ -19,7 +20,7 @@ public:
 
 	bool HasOre();
 	bool IsAlias(std::string alias);
-	void Print();
+	void Print(bool alias, bool mined, bool processed);
 
 private:
 	std::vector<std::string> alias;

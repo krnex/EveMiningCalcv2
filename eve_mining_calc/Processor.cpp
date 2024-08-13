@@ -55,7 +55,7 @@ void Processor::WriteToFile(PilotSet* pilots, Data* data)
 	for (auto pilot : *pilots)
 	{
 		if(data->config.zeroOrePilots || pilot->HasOre())
-			pilot->Print();
+			pilot->Print(true, true, data->config.processedOre);
 	}
 
 	std::cout.rdbuf(coutbuf);

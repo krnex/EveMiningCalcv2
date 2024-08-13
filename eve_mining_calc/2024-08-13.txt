@@ -1,0 +1,13 @@
+Pilot Alias':Antarian Duket, Antarian Jura Antarian, Antarian Mosfet Antarian
+Taxed Ores:
+	Lavish Otavite      : 1414
+	Lavish Sperrylite   : 3490
+	Otavite             : 298
+	Replete Zircon      : 101142
+	Sperrylite          : 1341
+	Zeolites            : 10238
+	Zircon              : 111754
+Pilot Alias':Billy Credit
+Taxed Ores:
+	Replete Zircon      : 67334
+	Zircon              : 54734

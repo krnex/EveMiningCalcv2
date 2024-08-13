@@ -134,25 +134,36 @@ bool Pilot::HasOre()
 	return (this->oresMined.size() > 0);
 }
 
-void Pilot::Print()
+void Pilot::Print(bool alias, bool mined, bool processed)
 {
-	std::cout << "Pilot Alias':" << this->alias[0];
-	for (int i = 1; i < this->alias.size(); i++)
+	if (alias)
 	{
-		std::cout << ", " << this->alias[i];
-	}
-	std::cout << std::endl;
-	std::cout << "Ores Mined:" << std::endl;
-	for (const auto& value : this->oresMined) 
-	{
-		std::cout << "\t" << value.first << "\t" << value.second << std::endl;
-	}
-	std::cout << "Processed Ore:" << std::endl;
-	for (const auto& value : this->oresProcessed)
-	{
-		std::cout << "\t" << value.first << "\t" << value.second << std::endl;
+		std::cout << "Pilot Alias':" << this->alias[0];
+		for (int i = 1; i < this->alias.size(); i++)
+		{
+			std::cout << ", " << this->alias[i];
+		}
+		std::cout << std::endl;
 	}
 
-	std::cout << std::endl;
+	if (mined)
+	{
+		std::cout << "Taxed Ores:" << std::endl;
+		for (const auto& value : this->oresMined)
+		{
+			std::cout << "\t" << std::left << std::setw(20) << value.first << ": " << value.second << std::endl;
+		}
+	}
+
+	if (processed)
+	{
+		std::cout << "Taxed Ores Processed:" << std::endl;
+		for (const auto& value : this->oresProcessed)
+		{
+			std::cout << "\t" << std::left << std::setw(20) << value.first << ": " << value.second << std::endl;
+		}
+
+		std::cout << std::endl;
+	}
 }
 

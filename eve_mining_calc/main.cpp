@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 		data.PrintOres();
 		data.PrintRaw();
 		
-		for (auto pilot : pilots) pilot->Print();
+		for (auto pilot : pilots) pilot->Print(true, true, true);
 
 		std::cout << "Press any key to close...";
 		_getch();

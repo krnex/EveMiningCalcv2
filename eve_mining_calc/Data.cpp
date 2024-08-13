@@ -172,6 +172,9 @@ int Data::OpenConfigFile(std::string path)
 				if(lineData[0] == "showZeroOrePilots")
 					this->config.zeroOrePilots = (lineData[1] == "true" ? true : false);
 
+				if (lineData[0] == "showProcessedOre")
+					this->config.processedOre = (lineData[1] == "true" ? true : false);
+
 				if (lineData[0] == "R4")
 					this->config.taxrate[0] = std::stof((lineData[1]));
 				if (lineData[0] == "R8")

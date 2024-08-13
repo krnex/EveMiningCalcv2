@@ -17,6 +17,7 @@ struct Config
 	std::array<float, 3> reprocess; // Ore, Gas, Scrap
 	bool debug;
 	bool zeroOrePilots;
+	bool processedOre;
 };
 
 struct OreSection
